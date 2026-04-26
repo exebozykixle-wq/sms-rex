@@ -76,11 +76,13 @@ class _ComposeScreenState extends State<ComposeScreen> {
     // Send via selected channels
     if (_channels['sms'] == true && targetPhones.isNotEmpty) {
       try {
-        await sendSMS(
-          message: '[$senderName - SMS REX] $msgBody',
-          recipients: targetPhones,
-          sendDirect: true,
-        );
+        final telephony = Telephony.instance;
+        for (final phone in targetPhones) {
+          await telephony.sendSms(
+            to: phone,
+            message: '[$senderName - SMS REX] $msgBody',
+          );
+        }
       } catch (_) {}
     }
 
