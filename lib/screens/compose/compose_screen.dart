@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_sms/flutter_sms.dart';
+import 'package:telephony/telephony.dart';
 import 'package:sms_rex/theme/app_theme.dart';
 
 class ComposeScreen extends StatefulWidget {
