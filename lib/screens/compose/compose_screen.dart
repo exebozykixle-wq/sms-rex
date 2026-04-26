@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:telephony/telephony.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:sms_rex/theme/app_theme.dart';
 
 class ComposeScreen extends StatefulWidget {
@@ -76,12 +76,9 @@ class _ComposeScreenState extends State<ComposeScreen> {
     // Send via selected channels
     if (_channels['sms'] == true && targetPhones.isNotEmpty) {
       try {
-        final telephony = Telephony.instance;
         for (final phone in targetPhones) {
-          await telephony.sendSms(
-            to: phone,
-            message: '[$senderName - SMS REX] $msgBody',
-          );
+          final uri = Uri(scheme: 'sms', path: phone, queryParameters: {'body': '[$senderName - SMS REX] $msgBody'});
+          await launchUrl(uri);
         }
       } catch (_) {}
     }

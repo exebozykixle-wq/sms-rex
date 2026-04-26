@@ -17,7 +17,7 @@ dependencies:
   firebase_messaging: ^14.7.10
 
   # SMS - working package for Flutter 3.x
-  telephony: ^0.2.0
+  url_launcher: ^6.2.5
 
   # Permissions
   permission_handler: ^11.1.0
