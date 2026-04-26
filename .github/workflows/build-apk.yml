@@ -7,6 +7,9 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build APK
@@ -53,9 +56,8 @@ jobs:
           tag_name: v${{ github.run_number }}
           name: SMS REX v${{ github.run_number }}
           body: |
-            ## 🐍 SMS REX — Build #${{ github.run_number }}
-            **Changes:** ${{ github.event.head_commit.message }}
-            APK neeche se download karein ⬇️
+            ## SMS REX Build #${{ github.run_number }}
+            APK neeche se download karein
           files: build/app/outputs/flutter-apk/app-release.apk
           draft: false
           prerelease: false
